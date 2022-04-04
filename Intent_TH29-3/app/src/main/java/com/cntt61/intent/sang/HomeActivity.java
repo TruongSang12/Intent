@@ -1,43 +1,45 @@
 package com.cntt61.intent.sang;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class HomeActivity extends AppCompatActivity {
-    private TextView tv;
-    private Button btn1, btn2;
+    private TextView tvName;
+    private Button btnQuiz1, btnQuiz2;
 
     @Override
-    protected  void OnCreate(Bundle savedInstaceState){
-        super.OnCreate(savedInstaceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        tv = (TextView) findViewById(R.id.tvUsername);
-        btn1 = (Button) findViewById(R.id.btn1);
-        btn2 = (Button) findViewById(R.id.btn2);
+        tvName = (TextView) findViewById(R.id.tvUserName);
+        btnQuiz1 = (Button) findViewById(R.id.btnQuiz1);
+        btnQuiz2 = (Button) findViewById(R.id.btnQuiz2);
 
         Intent i = getIntent();
-        String Username = i.getStringExtra("Name");
+        String UserName = i.getStringExtra("Name");
 
-        tv.setText(Username);
+        tvName.setText(UserName);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btnQuiz1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Q1 = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(Q1);
+                Intent iQuiz1 = new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(iQuiz1);
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+
+        btnQuiz2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Q2 = new Intent(HomeActivity.this, MainActivity.class);
-                startActivity(Q2);
+                Intent iQuiz2 = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(iQuiz2);
             }
         });
     }
